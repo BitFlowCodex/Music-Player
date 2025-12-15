@@ -10,28 +10,27 @@
 <body>
     <section class="wrapper">
         <div class="cover-container">
-            <img id="songCover" src="" alt="Cover">
-            <h3 id="name"></h3>
-            <h1 id="songName"></h1>
+            <img id="cover-image" src="" alt="Cover">
+            <h3 id="artist-name"></h3>
+            <h1 id="song-name"></h1>
         </div>
 
         <div class="button-containers">
             <div>
-                <button class="fa-solid fa-forward"></button>
-                <button class="fa-solid fa-stop"></button>
-                <button class="fa-solid fa-forward"></button>
+                <button id="backward" class="fa-solid fa-forward"></button>
+                <button id="stop" class="fa-solid fa-play"></button>
+                <button id="forward" class="fa-solid fa-forward"></button>
             </div>
             <div>
-                <div>
-                    <label>00:00</label>
-                    <label>00:00</label>
+                <div class="timestap">
+                    <label id="current">00:00</label>
+                    <label id="overall">00:00</label>
                 </div>
-                <input id="timestamp" type="range">   
+                <input id="timestamp-range" type="range">   
             </div>
             <div>
-                <button class="fa-solid fa-volume-off"></button>
-                <input type="range">
-                <button class="fa-solid fa-volume-high"></button>
+                <input id="volume-range" type="range">
+                <button id="volume-button" class="fa-solid fa-volume-high"></button>
             </div>
         </div>
 
