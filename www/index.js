@@ -21,5 +21,12 @@ const volume_button = document.getElementById("volume-button");
 const audio_url = "";
 const audio = new Audio(audio_url);
 
-
+// Toggle Volume
+volume_button.addEventListener("click", () => {
+  if (volume_button.classList.contains("fa-volume-high")) {
+    volume_button.classList.replace("fa-volume-high", "fa-volume-xmark");
+  } else {
+    volume_button.classList.replace("fa-volume-xmark", "fa-volume-high");
+  }
+});
 
