@@ -30,3 +30,12 @@ volume_button.addEventListener("click", () => {
   }
 });
 
+// Toggle Play/Pause
+stop_button.addEventListener("click", () => {
+  if (stop_button.classList.contains("fa-play")) {
+    stop_button.classList.replace("fa-play", "fa-stop");
+  } else {
+    stop_button.classList.replace("fa-stop", "fa-play");
+    audio.play()
+  }
+});
