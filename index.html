@@ -11,31 +11,37 @@
     />
   </head>
   <body>
+    <img class="background-image" id="background-image" src="" alt="" />
     <section class="wrapper">
       <div class="cover-container">
-        <img id="cover-image" src="" alt="Cover" />
+          <img id="cover-image" src="" alt="Cover" />
+          <span></span>
+      </div>
+
+      <div class="title-container">
         <h3 id="artist-name"></h3>
         <h1 id="song-name"></h1>
       </div>
 
-      <div class="button-containers">
-        <div>
-          <button id="backward" class="fa-solid fa-forward"></button>
-          <button id="stop" class="fa-solid fa-play"></button>
-          <button id="forward" class="fa-solid fa-forward"></button>
-        </div>
-        <div>
-          <div class="timestap">
-            <label id="current">00:00</label>
-            <label id="overall">00:00</label>
-          </div>
-          <input id="timestamp-range" type="range" />
-        </div>
-        <div>
-          <input id="volume-range" type="range" />
-          <button id="volume-button" class="fa-solid fa-volume-high"></button>
-        </div>
+      <div class="button-container">
+        <button id="backward" class="fa-solid fa-forward"></button>
+        <button id="stop" class="fa-solid fa-play"></button>
+        <button id="forward" class="fa-solid fa-forward"></button>
       </div>
+      
+      <div class="timestamp-container">
+        <div class="timestamp">
+          <label id="current">00:00</label>
+          <label id="overall">00:00</label>
+        </div>
+        <input id="timestamp-range" type="range" />
+      </div>
+
+      <div class="audio-container">
+        <input id="volume-range" type="range" />
+        <button id="volume-button" class="fa-solid fa-volume-high"></button>
+      </div>
+
     </section>
     <script src="index.js"></script>
   </body>

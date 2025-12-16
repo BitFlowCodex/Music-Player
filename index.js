@@ -2,6 +2,7 @@
 const cover_image = document.getElementById("cover-image");
 const artist_name = document.getElementById("artist-name");
 const song_name = document.getElementById("song-name");
+const background_image = document.getElementById("background-image");
 
 // Button ID Tags
 const backward_button = document.getElementById("backward");
@@ -61,10 +62,12 @@ window.addEventListener("load", () => {
   stop_button.addEventListener("click", () => {
     if (music.paused) {
       music.play();
+      cover_image.style.animation = "rotation 3s linear infinite"
       stop_button.classList.replace("fa-play", "fa-stop");
     } else {
       music.pause();
       stop_button.classList.replace("fa-stop", "fa-play");
+      cover_image.style.animation = "none"
     }
   });
 
@@ -106,6 +109,7 @@ window.addEventListener("load", () => {
     cover_image.src = s.image_src;
     artist_name.textContent = s.artist_name;
     song_name.textContent = s.song_name;
+    background_image.src = s.image_src;
   }
 
   function nextLoad() {
