@@ -23,19 +23,19 @@ let isMuted = false;
 
 const songs = [
   {
-    path: "./assets/songs/1.mp3",
+    path: "./assets/1.mp3",
     artist_name: "Ghost",
     song_name: "Mary on a cross",
     image_src: "./assets/images/Ghost.jpg",
   },
   {
-    path: "./assets/songs/2.mp3",
+    path: "./assets/2.mp3",
     artist_name: "The Stranglers",
     song_name: "Golden Brown",
     image_src: "./assets/images/Golden.jpg",
   },
   {
-    path: "./assets/songs/3.mp3",
+    path: "./assets/3.mp3",
     artist_name: "Mr.Kitty",
     song_name: "After Dark",
     image_src: "./assets/images/Dark.jpg",
