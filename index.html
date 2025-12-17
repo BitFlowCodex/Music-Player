@@ -19,14 +19,14 @@
       </div>
 
       <div class="title-container">
-        <h3 id="artist-name"></h3>
+        <p id="artist-name"></p>
         <h1 id="song-name"></h1>
       </div>
 
       <div class="button-container">
-        <button id="backward" class="fa-solid fa-forward"></button>
+        <button id="previous" class="fa-solid fa-forward"></button>
         <button id="stop" class="fa-solid fa-play"></button>
-        <button id="forward" class="fa-solid fa-forward"></button>
+        <button id="next" class="fa-solid fa-forward"></button>
       </div>
       
       <div class="timestamp-container">
@@ -34,11 +34,11 @@
           <label id="current">00:00</label>
           <label id="overall">00:00</label>
         </div>
-        <input id="timestamp-range" type="range" />
+        <input value="0" id="timestamp-range" type="range" />
       </div>
 
       <div class="audio-container">
-        <input id="volume-range" type="range" />
+        <input value="50" id="volume-range" type="range" />
         <button id="volume-button" class="fa-solid fa-volume-high"></button>
       </div>
 

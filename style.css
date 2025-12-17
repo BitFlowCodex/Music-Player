@@ -55,7 +55,7 @@ input[type="range"]::-webkit-slider-thumb {
   background-color: var(--secondary-color);
   border: none;
   padding: 0.1rem;
-  border-radius: 1000px;
+  border-radius: 100%;
   transition: transform;
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -79,7 +79,6 @@ input[type="range"]::-moz-range-thumb:hover {
 .wrapper {
   position: relative;
   display: grid;
-  
   place-items: center;
   text-align: center;
   background-color: var(--background-color);
@@ -89,6 +88,7 @@ input[type="range"]::-moz-range-thumb:hover {
   padding-top: calc(var(--image-width) / 2);
   z-index: 9999;
   color: var(--text-color);
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.25);
 }
 
 .cover-container {
@@ -109,6 +109,14 @@ input[type="range"]::-moz-range-thumb:hover {
   object-fit: cover;
   border: 4px solid white;
   box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.25);
+  animation: rotation 3s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .cover-container span {
@@ -116,6 +124,14 @@ input[type="range"]::-moz-range-thumb:hover {
   background-color: white;
   padding: min(2rem, 10%);
   border-radius: 20rem;
+}
+
+.title-container p {
+  font-size: clamp(0.5rem, 8vw, 1.5rem);
+}
+
+.title-container h1 {
+  font-size: clamp(1rem, 8vw, 3rem);
 }
 
 .button-container {
@@ -128,7 +144,7 @@ input[type="range"]::-moz-range-thumb:hover {
   font-size: clamp(0.5rem, 8vw, 3rem);
 }
 
-#backward {
+#previous {
   rotate: 180deg;
 }
 
@@ -141,24 +157,17 @@ input[type="range"]::-moz-range-thumb:hover {
 
 }
 
-.timestamp-container div {
+.timestamp {
   display: flex;
   justify-content: space-between;
   font-size: clamp(1rem, 4vw, 1.5rem);
 }
+
+
 
 .audio-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 45%;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

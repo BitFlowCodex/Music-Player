@@ -5,9 +5,9 @@ const song_name = document.getElementById("song-name");
 const background_image = document.getElementById("background-image");
 
 // Button ID Tags
-const backward_button = document.getElementById("backward");
+const previous_button = document.getElementById("previous");
 const stop_button = document.getElementById("stop");
-const forward_button = document.getElementById("forward");
+const next_button = document.getElementById("next");
 
 // Song ID Tags
 const current_timestamp = document.getElementById("current");
@@ -18,11 +18,8 @@ const timestamp_range = document.getElementById("timestamp-range");
 const volume_range = document.getElementById("volume-range");
 const volume_button = document.getElementById("volume-button");
 
+// Audio Class & List Example
 const music = new Audio();
-let isPlaying = false;
-let isMuted = false;
-
-
 const songs = [
   {
     path: "./assets/1.mp3",
@@ -45,17 +42,16 @@ const songs = [
 ];
 let song_index = 0;
 
-window.addEventListener("load", () => {
+// Wait til the page is fully loaded
+window.addEventListener("DOMContentLoaded", () => {
   // Toggle Volume
   volume_button.addEventListener("click", () => {
-    if (!isMuted) {
+    if (!music.muted) {
       volume_button.classList.replace("fa-volume-high", "fa-volume-xmark");
       music.volume = 0;
-      isMuted = true;
     } else {
       volume_button.classList.replace("fa-volume-xmark", "fa-volume-high");
       music.volume = volume_range.value / 100;
-      isMuted = false;
     }
   });
 
@@ -63,41 +59,41 @@ window.addEventListener("load", () => {
   stop_button.addEventListener("click", () => {
     if (music.paused) {
       music.play();
-      cover_image.style.animation = "rotation 3s linear infinite"
+      cover_image.style.animationPlayState = "running";
       stop_button.classList.replace("fa-play", "fa-stop");
     } else {
       music.pause();
+      cover_image.style.animationPlayState = "paused";
       stop_button.classList.replace("fa-stop", "fa-play");
-      cover_image.style.animation = "none"
     }
   });
 
-  timestamp_range.min = 0;
-  timestamp_range.max = music.duration;
-  music.currentTime = timestamp_range.value;
-  duration_timestamp.textContent = formatTime(music.duration);
-  current_timestamp.textContent = formatTime(music.currentTime);
-
+  // Calculates time difference with pads
   function formatTime(sec) {
     const m = Math.floor(sec / 60);
     const s = Math.floor(sec % 60);
     return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
   }
 
+  // Calculates the progress bar
   function progressBar() {
     let percentage = (music.currentTime / music.duration) * 100;
     timestamp_range.value = percentage;
     current_timestamp.textContent = formatTime(music.currentTime);
   }
 
+  // Updates the current time on click & motion
   timestamp_range.addEventListener("input", () => {
     music.currentTime = (timestamp_range.value / 100) * music.duration;
   });
 
-  music.addEventListener("timeupdate", () => {
-    progressBar();
-    nextLoad();
-  });
+  // Updates the progress bar and loads next song when previous one finishes
+  music.addEventListener("timeupdate", progressBar);
+
+  // Auto load next song on end
+  music.addEventListener("ended", nextLoad);
+
+  // Activates once music gets its needed data (duration, size etc)
   music.addEventListener("loadedmetadata", () => {
     timestamp_range.max = 100;
     duration_timestamp.textContent = formatTime(music.duration);
@@ -111,39 +107,41 @@ window.addEventListener("load", () => {
     artist_name.textContent = s.artist_name;
     song_name.textContent = s.song_name;
     background_image.src = s.image_src;
+    music.play();
   }
 
+  // Will load once either the music ends OR if we press the previous/forward buttons
   function nextLoad() {
     if (music.currentTime >= music.duration) {
       song_index++;
+      stop_button.classList.replace("fa-play", "fa-stop");
+      music.play();
       if (song_index >= songs.length) song_index = 0;
       loadSong(song_index);
-      music.play();
-      stop_button.classList.replace("fa-play", "fa-stop");
     }
   }
 
-  forward_button.addEventListener("click", () => {
-    if (song_index <= songs.length) {
-      song_index++;
-      loadSong(song_index);
-    }
+  next_button.addEventListener("click", () => {
+    stop_button.classList.replace("fa-play", "fa-stop");
+    song_index++;
+    if (song_index >= songs.length) song_index = 0;
+    loadSong(song_index);
   });
 
-  backward_button.addEventListener("click", () => {
-    if (song_index > 0) {
-      song_index--;
-      loadSong(song_index);
-    }
+  previous_button.addEventListener("click", () => {
+    stop_button.classList.replace("fa-play", "fa-stop");
+    song_index--;
+    if (song_index < 0) song_index = songs.length - 1;
+    loadSong(song_index);
   });
 
   volume_range.addEventListener("input", () => {
-    music.volume = volume_range.value / 100;
+    music.volume = volume_range.value / 100; // Calculates real value
     if (isMuted) {
       volume_button.classList.replace("fa-volume-xmark", "fa-volume-high");
       isMuted = false;
     }
   });
 
-  loadSong(song_index);
+  loadSong(song_index); // Auto load first song
 });
