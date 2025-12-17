@@ -88,10 +88,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // Updates the progress bar and loads next song when previous one finishes
-  music.addEventListener("timeupdate", progressBar());
+  music.addEventListener("timeupdate", progressBar);
 
   // Auto load next song on end
-  music.addEventListener("ended", nextLoad());
+  music.addEventListener("ended", nextLoad);
 
   // Activates once music gets its needed data (duration, size etc)
   music.addEventListener("loadedmetadata", () => {
