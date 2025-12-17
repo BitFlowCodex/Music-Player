@@ -23,21 +23,21 @@ const music = new Audio();
 const songs = [
   {
     path: "./assets/1.mp3",
-    artist_name: "Ghost",
-    song_name: "Mary on a cross",
-    image_src: "./assets/images/Ghost.jpg",
+    artist_name: "Alex Hagen",
+    song_name: "Superhero",
+    image_src: "./assets/images/Superhero.webp",
   },
   {
     path: "./assets/2.mp3",
-    artist_name: "The Stranglers",
-    song_name: "Golden Brown",
-    image_src: "./assets/images/Golden.jpg",
+    artist_name: "LOFIN",
+    song_name: "Scars",
+    image_src: "./assets/images/Scars.webp",
   },
   {
     path: "./assets/3.mp3",
-    artist_name: "Mr.Kitty",
-    song_name: "After Dark",
-    image_src: "./assets/images/Dark.jpg",
+    artist_name: "Martin Bravi",
+    song_name: "NEEDED YOU",
+    image_src: "./assets/images/Needed.webp",
   },
 ];
 let song_index = 0;
