@@ -49,11 +49,9 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!music.muted) {
       volume_button.classList.replace("fa-volume-high", "fa-volume-xmark");
       music.volume = 0;
-      isMuted = true;
     } else {
       volume_button.classList.replace("fa-volume-xmark", "fa-volume-high");
       music.volume = volume_range.value / 100;
-      isMuted = false;
     }
   });
 
@@ -90,10 +88,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // Updates the progress bar and loads next song when previous one finishes
-  music.addEventListener("timeupdate", () => {
-    progressBar();
-    nextLoad();
-  });
+  music.addEventListener("timeupdate", progressBar());
+
+  // Auto load next song on end
+  music.addEventListener("ended", nextLoad());
 
   // Activates once music gets its needed data (duration, size etc)
   music.addEventListener("loadedmetadata", () => {
@@ -116,27 +114,25 @@ window.addEventListener("DOMContentLoaded", () => {
   function nextLoad() {
     if (music.currentTime >= music.duration) {
       song_index++;
-      if (song_index >= songs.length) song_index = 0;
       stop_button.classList.replace("fa-play", "fa-stop");
       music.play();
+      if (song_index >= songs.length) song_index = 0;
       loadSong(song_index);
     }
   }
 
   next_button.addEventListener("click", () => {
-    if (song_index <= songs.length) {
-      stop_button.classList.replace("fa-play", "fa-stop");
-      song_index++;
-      loadSong(song_index);
-    }
+    stop_button.classList.replace("fa-play", "fa-stop");
+    song_index++;
+    if (song_index >= songs.length) song_index = 0;
+    loadSong(song_index);
   });
 
   previous_button.addEventListener("click", () => {
-    if (song_index > 0) {
-      stop_button.classList.replace("fa-play", "fa-stop");
-      song_index--;
-      loadSong(song_index);
-    }
+    stop_button.classList.replace("fa-play", "fa-stop");
+    song_index--;
+    if (song_index < 0) song_index = songs.length - 1;
+    loadSong(song_index);
   });
 
   volume_range.addEventListener("input", () => {
