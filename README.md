@@ -21,7 +21,10 @@ A web-based music player that can play, pause, skip, and adjust volume of songs.
 - Playlist loops automatically
 - Display artist name, song title, and cover image
 
-## How to Run
+## Clone Repository
 
+```bash
+git clone https://github.com/BitFlowCodex/Music-Player.git
+```
 1. Clone or download the repository
 2. Open "index.html" in a web browser
