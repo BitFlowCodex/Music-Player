@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <img class="background-image" id="background-image" src="" alt="" />
+    <section class="wrapper">
+      <div class="cover-container">
+          <img id="cover-image" src="" alt="Cover" />
+          <span></span>
+      </div>
+
+      <div class="title-container">
+        <p id="artist-name"></p>
+        <h1 id="song-name"></h1>
+      </div>
+
+      <div class="button-container">
+        <button id="previous" class="fa-solid fa-forward"></button>
+        <button id="stop" class="fa-solid fa-play"></button>
+        <button id="next" class="fa-solid fa-forward"></button>
+      </div>
+      
+      <div class="timestamp-container">
+        <div class="timestamp">
+          <label id="current">00:00</label>
+          <label id="overall">00:00</label>
+        </div>
+        <input id="timestamp-range" type="range" />
+      </div>
+
+      <div class="audio-container">
+        <input id="volume-range" type="range" />
+        <button id="volume-button" class="fa-solid fa-volume-high"></button>
+      </div>
+
+    </section>
+    <script src="index.js"></script>
+  </body>
+</html>
