@@ -19,24 +19,25 @@ const volume_range = document.getElementById("volume-range");
 const volume_button = document.getElementById("volume-button");
 
 const music = new Audio();
+
 const songs = [
   {
-    path: "./assets/1.mp3",
-    artist_name: "Alex Hagen",
-    song_name: "Superhero",
-    image_src: "./assets/images/Superhero.webp",
+    path: "assets/Heroes-Tonight.mp3",
+    artist_name: "NoCoprightSounds",
+    song_name: "Heroes Tonight",
+    image_src: "assets/images/1.jpg",
   },
   {
-    path: "./assets/2.mp3",
-    artist_name: "LOFIN",
-    song_name: "Scars",
-    image_src: "./assets/images/Scars.webp",
+    path: "assets/On-&-On.mp3",
+    artist_name: "NoCoprightSounds",
+    song_name: "On & On",
+    image_src: "assets/images/2.jpg",
   },
   {
-    path: "./assets/3.mp3",
-    artist_name: "Martin Bravi",
-    song_name: "NEEDED YOU",
-    image_src: "./assets/images/Needed.webp",
+    path: "assets/Why-We-Lose.mp3",
+    artist_name: "NoCoprightSounds",
+    song_name: "Why We Lose",
+    image_src: "assets/images/3.jpg",
   },
 ];
 
@@ -124,6 +125,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   next_button.addEventListener("click", () => {
     stop_button.classList.replace("fa-play", "fa-stop");
+    cover_image.style.animationPlayState = "running";
     song_index++;
     if (song_index >= songs.length) song_index = 0;
     loadSong(song_index);
@@ -131,6 +133,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   previous_button.addEventListener("click", () => {
     stop_button.classList.replace("fa-play", "fa-stop");
+    cover_image.style.animationPlayState = "running";
     song_index--;
     if (song_index < 0) song_index = songs.length - 1;
     loadSong(song_index);
