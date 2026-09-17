@@ -10,7 +10,7 @@ A web-based music player that can play, pause, skip, and adjust volume of songs.
 
 ### Final look (demo)
 
-![alt text](/assets/demo.mp4)
+https://github.com/BitFlowCodex/Music-Player/assets/demo.mp4
 
 ## Features
 
