@@ -8,9 +8,9 @@ A web-based music player that can play, pause, skip, and adjust volume of songs.
 
 ![alt text](/assets/images/Figma.png)
 
-### Final look
+### Final look (demo)
 
-![alt text](/assets/images/CSS.png)
+![alt text](/assets/demo.mp4)
 
 ## Features
 
@@ -26,5 +26,6 @@ A web-based music player that can play, pause, skip, and adjust volume of songs.
 ```bash
 git clone https://github.com/BitFlowCodex/Music-Player.git
 ```
+
 1. Clone or download the repository
 2. Open "index.html" in a web browser
